@@ -1,0 +1,75 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path id="p1" d="M25,55Q15,15,55,25Z" style="fill: none;" />
+        <style>
+            @-webkit-keyframes anima {
+                0% {fill: #22A62B;color: #22A62B;}  
+              10% {fill: #14E3E6;color: #14E3E6;}
+              20%{fill: #195BEF;color: #195BEF;}
+              30%{fill: #DF26D9;color: #DF26D9;}
+              40%{fill: #DF2688;color: #DF2688;}
+              50%{fill: #FEA903;color: #FEA903;}
+              60%{fill: #DF26DE;color: #DF26DE;}
+              70%{fill: #2C4AED;color: #2C4AED;}
+              80%{fill: #14E3F7;color: #14E3F7;}
+              90%{fill: #195BEF;color: #195BEF;}
+              100% {fill: #22A62B;}
+            }
+            @-webkit-keyframes anima2 {
+                0% {stroke: #22A62B;color: #22A62B;}  
+              10% {stroke: #14E3E6;color: #14E3E6;}
+              20%{stroke: #195BEF;color: #195BEF;}
+              30%{stroke: #DF26D9;color: #DF26D9;}
+              40%{stroke: #DF2688;color: #DF2688;}
+              50%{stroke: #FEA903;color: #FEA903;}
+              60%{stroke: #DF26DE;color: #DF26DE;}
+              70%{stroke: #2C4AED;color: #2C4AED;}
+              80%{stroke: #14E3F7;color: #14E3F7;}
+              90%{stroke: #195BEF;color: #195BEF;}
+              100% {stroke: #22A62B;}
+            }
+            #clock-icon{
+              display: block;
+              -webkit-animation: anima 30s ease-out infinite;
+              -webkit-animation-delay: 2.5s;
+            }
+            #z{
+              display: block;
+              -webkit-animation: anima2 30s ease-out infinite;
+              -webkit-animation-delay: 2.5s;
+            }
+        </style>
+    </defs>
+    <g id="clock-icon" transform="scale(2)">
+        <g id="z" style="stroke-width:7; stroke: black; stroke-linecap: round;">
+            <use xlink:href="#p1" />
+            <use xlink:href="#p1" transform="rotate(90,20,20) translate(0,-150)" />
+            <circle cx="95" cy="95" r="70" style="fill: none;" />
+            <line x1="25" y1="165" x2="45" y2="145" />
+            <line x1="165" y1="165" x2="145" y2="145" />
+        </g>
+        <rect id="hour-hand" x="91" y="45" width="8" height="50" rx="5" ry="5" transform="rotate(0 95 95)">
+            <animateTransform attributeName="transform" additive="sum" type="rotate" from="0 95 95" to="360 95 95" dur="24h" repeatCount="indefinite"/>
+        </rect>
+        <rect id="minute-hand" x="92" y="35" width="6" height="60" rx="5" ry="5" transform="rotate(0 95 95)">
+            <animateTransform attributeName="transform" additive="sum" type="rotate" from="0 95 95" to="360 95 95" dur="1h" repeatCount="indefinite"/>
+        </rect>
+        <rect id="second-hand" x="95" y="25" width="1" height="70" style="stroke:red;" transform="rotate(0 95 95)">
+            <animateTransform attributeName="transform" additive="sum" type="rotate" from="0 95 95" to="360 95 95" dur="60s" repeatCount="indefinite"/>
+        </rect>
+        <script type="text/javascript">
+            var date = new Date,
+                MINUTE = 60,
+                HOUR   = 60*MINUTE,
+                seconds = date.getSeconds(),
+                minutes = date.getMinutes(),
+                hours = date.getHours();
+            minutes = (minutes * MINUTE) + seconds;
+            hours = (hours * HOUR) + minutes;
+            document.getElementById('second-hand').setAttribute('transform', 'rotate('+360*(seconds/MINUTE)+' 95 95)');
+            document.getElementById('minute-hand').setAttribute('transform', 'rotate('+360*(minutes/HOUR)+' 95 95)');
+            document.getElementById('hour-hand').setAttribute('transform', 'rotate('+360*(hours/(12*HOUR))+' 95 95)');
+        </script>￼￼￼￼
+    </g>
+</svg>
