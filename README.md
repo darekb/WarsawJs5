@@ -1,4 +1,4 @@
-# WarsawJS Presentation Template
+# Co potrafi SVG? Dariusz Biedrzycki
 
 ![Logo](/themes/warsawjs/pictures/logo.png)
 
